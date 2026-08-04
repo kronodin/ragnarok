@@ -1,0 +1,25 @@
+profiles:
+  - name: "default-web"
+    http:
+      enabled: true
+      port: 8080
+      tls: false
+      fake_pages:
+        - "/admin"
+        - "/wp-login.php"
+        - "/.env"
+        - "/backup.sql"
+      fake_banner: "Apache/2.4.41 (Ubuntu)"
+    ssh:
+      enabled: true
+      port: 2222
+      banner: "SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.3"
+      fake_users:
+        - {"user": "admin", "password": "admin123"}
+        - {"user": "root", "password": "toor"}
+    logging:
+      jsonl: "/tmp/ragnarok_hp_capture.jsonl"
+      pcap: false
+      alerts:
+        webhook: null
+        slack: null
